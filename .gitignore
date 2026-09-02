@@ -1,0 +1,14 @@
+docs/
+app/
+node_modules/
+dist/
+.env
+*.log
+.DS_Store
+__pycache__/
+.pytest_cache/
+*.pyc
+tests/allure-results/
+tests/reports/
+.venv/
+venv/
