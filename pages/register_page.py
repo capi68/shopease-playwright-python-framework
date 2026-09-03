@@ -43,5 +43,5 @@ class RegisterPage(BasePage):
         self.register_email.fill(email)
         self.register_password.fill(password)
         self.confirm_password.fill(confirm_password)
-        self.create_count_btn.click()
+        self.create_account_btn.click()
     
