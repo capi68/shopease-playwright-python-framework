@@ -7,7 +7,7 @@
   },
   "credentials": {
     "customer": {
-      "email": "customer@shoease.io",
+      "email": "customer@shopease.io",
       "password": "Customer123!"
     },
     "vip": {

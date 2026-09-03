@@ -20,12 +20,12 @@ class LoginPage(BasePage):
     @property
     def password_input(self) -> Locator:
         """Return password input locator."""
-        return self.page.get_by_test_id("login-submit")
+        return self.page.get_by_test_id("login-password")
 
     @property
     def login_submit_btn(self) -> Locator:
         """Return submit button locator."""
-        return self.page.get_by_test_id("login-password")
+        return self.page.get_by_test_id("login-submit")
 
     @property
     def sign_up(self) -> Locator:

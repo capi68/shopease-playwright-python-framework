@@ -35,7 +35,7 @@ class Settings:
 
     def _load(self):
 
-        config_path = Path(__file__).parent.parent / "config.json"
+        config_path = Path(__file__).parent / "config.json"
         with open(config_path, "r", encoding="utf-8") as f:
             data = json.load(f)
 
