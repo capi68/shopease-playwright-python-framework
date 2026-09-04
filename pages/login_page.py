@@ -32,6 +32,16 @@ class LoginPage(BasePage):
         """Return sign up link locator."""
         return self.page.get_by_test_id("register-link")
 
+    @property
+    def error_alert(self) -> Locator:
+        """Return login error locator."""
+        return self.page.get_by_test_id("login-error")
+
+
+    @property
+    def register_link(self) -> Locator:
+        """Return register link locator"""
+        return self.page.get_by_test_id("register-link")
 
     def login(self, email: str, password: str) -> None:
         """Perform full login action."""
