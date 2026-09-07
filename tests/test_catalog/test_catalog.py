@@ -3,13 +3,16 @@
 import allure
 import pytest
 from playwright.sync_api import expect, Page
+
+
 from pages.catalog_page import CatalogPage
 
 class TestCatalog:
     """Tests Catalog UI."""
 
     @pytest.mark.catalog
-    def test_catalog_page(self, authenticated_page: Page, catalog_page: CatalogPage) -> None:
+    @pytest.mark.usefixtures("authenticated_page")
+    def test_catalog_page(self,catalog_page: CatalogPage, nav_bar, footer) -> None:
         """Verify that authenticated users (customer/vip) can see catalog page correctly."""
 
         filter_categories = ["all", "electronics", "clothing", "home", "sports", "books"]
@@ -21,5 +24,6 @@ class TestCatalog:
         expect(catalog_page.filter_price_min).to_be_visible()
         expect(catalog_page.filter_price_max).to_be_visible()
         expect(catalog_page.filter_sort).to_be_visible()
-
+        expect(nav_bar.nav_bar).to_be_visible()
+        expect(footer.footer).to_be_visible()
 
