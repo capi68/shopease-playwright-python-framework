@@ -5,6 +5,7 @@ All page objects inherit from this class. It provides shared
 navigation, wait helpers, and screenshot utilities.
 """
 from typing import Optional
+import re
 from playwright.sync_api import Page, Locator, Response, expect
 
 class BasePage:
@@ -37,8 +38,8 @@ class BasePage:
         return self.page.locator(selector)
 
     def wait_for_url_contains(self, partial_url: str, timeout: float = 5000) -> None:
-        """Wait for the current URL to contain a specific substring."""
-        expect(self.page).to_have_url(f".*{partial_url}.*", timeout=timeout)
+        """Wait for the current URL to contain a substring."""
+        expect(self.page).to_have_url(re.compile(f".*{re.escape(partial_url)}.*"), timeout=timeout)
 
     def get_current_url(self) -> str:
         """Get the current page URL."""
