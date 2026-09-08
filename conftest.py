@@ -77,9 +77,9 @@ def authenticated_page(request: pytest.FixtureRequest, page: Page, login_page: L
     return page
 
 @pytest.fixture
-def nav_bar(authenticated_page):
-    from components.navbar import NavBar
-    return NavBar(authenticated_page, authenticated_page.get_by_test_id("navbar"))
+def navbar(authenticated_page):
+    from components.navbar import NavBarComponent
+    return NavBarComponent(authenticated_page, authenticated_page.get_by_test_id("navbar"))
 
 @pytest.fixture
 def footer(authenticated_page):

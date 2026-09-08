@@ -2,7 +2,7 @@
 
 import allure
 import pytest
-from playwright.sync_api import expect, Page
+from playwright.sync_api import expect
 
 from components.footer import FooterComponent
 
@@ -12,7 +12,7 @@ class TestFooter:
 
     @pytest.mark.footer
     def test_footer_display(self, footer: FooterComponent) -> None:
-        """Verify de correct display of footer component."""
+        """Verify de correctly display of footer component."""
 
         links = ["contact", "shipping","returns","profile","orders","wishlist"]
 

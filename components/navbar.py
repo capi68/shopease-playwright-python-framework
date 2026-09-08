@@ -3,7 +3,7 @@
 from components.base_component import BaseComponent
 from playwright.sync_api import Locator
 
-class NavBar(BaseComponent):
+class NavBarComponent(BaseComponent):
     """Component Object for ShopEase navbar."""
 
     @property
@@ -26,20 +26,10 @@ class NavBar(BaseComponent):
         """Return search button locator."""
         return self.root.get_by_test_id("search-submit")
 
-    @property
-    def catalog_link(self) -> Locator:
-        """Return catalog link locator."""
-        return self.root.get_by_test_id("nav-catalog")
 
-    @property
-    def cart_link(self) -> Locator:
-        """Return cart link locator."""
-        return self.root.get_by_test_id("nav-cart")
-
-    @property
-    def sign_in_link(self) -> Locator:
-        """Return 'sign in' link locator."""
-        return self.root.get_by_test_id("nav-login")
+    def navbar_links(self, link: str) -> Locator:
+        """Return a navbar link locator for specific link."""
+        return self.root.get_by_test_id(f"nav-{link.lower()}")
 
 
     def search_product(self, query: str) -> None:

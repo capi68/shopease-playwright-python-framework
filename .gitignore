@@ -10,5 +10,6 @@ __pycache__/
 *.pyc
 tests/allure-results/
 tests/reports/
+test-results/
 .venv/
 venv/
