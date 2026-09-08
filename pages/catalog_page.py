@@ -30,6 +30,26 @@ class CatalogPage(BasePage):
         """Return product card locator by product_id"""
         return self.page.get_by_test_id(f"product-card-prod-{product_id}")
 
+    @property
+    def product_price(self) -> Locator:
+        """Return product price locator in the grid."""
+        return self.page.locator('[data-testid^="product-price-prod-"]')
+
+    @property
+    def product_rating(self) -> Locator:
+        """Return product rating locator in the grid."""
+        return self.page.locator('[data-testid^="product-rating-prod-"]')
+
+    @property
+    def product_name(self) -> Locator:
+        """Return product name locator in the grid."""
+        return self.page.locator('[data-testid^="product-name-prod-"]')
+
+    @property
+    def empty_catalog(self) -> Locator:
+        """Return empty catalog locator."""
+        return self.page.get_by_test_id("empty-catalog")
+
     #-----------------------------
     #Filters section
     #-----------------------------
