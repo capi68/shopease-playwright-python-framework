@@ -1,0 +1,100 @@
+
+
+from pages.base_page import BasePage
+from playwright.sync_api import Locator
+
+class CartPage(BasePage):
+    """Page Object for ShopEase cart page."""
+
+    @property
+    def url(self) -> str:
+        """Return tha cart page URL."""
+        return "/cart"
+
+    #-----------------
+    #Cart Page
+    #-----------------
+
+    @property
+    def cart_page_contain(self) -> Locator:
+        """Return cart page contain locator."""
+        return self.page.get_by_test_id("cart-page")
+
+    #----------------------
+    #items contain
+    #----------------------
+
+    @property
+    def items_contain(self) -> Locator:
+        """Return items contain locator."""
+        return self.page.get_by_test_id("cart-items")
+
+    def cart_item(self, item_id: int) -> Locator:
+        """Return cart item locator by item_id"""
+        return self.page.get_by_test_id(f"cart-item-prod-{item_id}")
+
+    def cart_item_image(self, item_id: int) -> Locator:
+        """Return item image of specific item locator."""
+        return self.cart_item(item_id).locator(".cart-item-image")
+
+    def cart_item_name(self, item_id: int) -> Locator:
+        """Return item name of specific item locator."""
+        return self.page.get_by_test_id(f"cart-item-name-prod-{item_id}")
+
+    def cart_item_price(self, item_id: int) -> Locator:
+        """Return item price of specific item locator."""
+        return self.page.get_by_test_id(f"cart-item-price-prod-{item_id}")
+
+    def cart_item_qty(self, item_id: int) -> Locator:
+        """Return item quantity of specific item locator."""
+        return self.page.get_by_test_id(f"cart-item-qty-prod-{item_id}")
+
+    def decrease_quantity_item_btn(self, item_id: int) -> Locator:
+        """Return decrease quantity button  of specific item locator."""
+        return self.page.get_by_test_id(f"qty-dec-prod-{item_id}")
+
+    def quantity_value_item_btn(self, item_id: int) -> Locator:
+        """Return quantity value  of specific item locator."""
+        return self.page.get_by_test_id(f"qty-val-prod-{item_id}")
+
+    def increase_quantity_item_btn(self, item_id: int) -> Locator:
+        """Return increase quantity button  of specific item locator."""
+        return self.page.get_by_test_id(f"qty-inc-prod-{item_id}")
+
+    def subtotal_item(self, item_id: int) -> Locator:
+        """Return subtotal of specific item locator."""
+        return self.page.get_by_test_id(f"cart-item-subtotal-prod-{item_id}")
+
+    def remove_item_btn(self, item_id: int) -> Locator:
+        """Return remove item button  of specific item locator."""
+        return self.page.get_by_test_id(f"cart-remove-prod-{item_id}")
+
+    #-------------------
+    #cart summary
+    #-------------------
+
+    @property
+    def cart_summary(self) -> Locator:
+        """Return cart_summary locator."""
+        return self.page.get_by_test_id("cart-summary")
+
+    @property
+    def cart_total_amount(self) -> Locator:
+        """Return cart total amount locator."""
+        return self.page.get_by_test_id("cart-total-amount")
+
+    @property
+    def clear_cart_btn(self) -> Locator:
+        """Return clear cart button locator."""
+        return self.page.get_by_test_id("clear-cart")
+
+    @property
+    def checkout_btn(self) -> Locator:
+        """Return checkout button locator."""
+        return self.page.get_by_test_id("checkout-button")
+
+
+
+
+
+
