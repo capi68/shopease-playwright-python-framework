@@ -83,5 +83,5 @@ def nav_bar(authenticated_page):
 
 @pytest.fixture
 def footer(authenticated_page):
-    from components.footer import Footer
-    return Footer(authenticated_page, authenticated_page.get_by_test_id("store-footer"))
+    from components.footer import FooterComponent
+    return FooterComponent(authenticated_page, authenticated_page.get_by_test_id("store-footer"))
