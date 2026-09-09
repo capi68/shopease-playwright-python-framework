@@ -77,6 +77,16 @@ def authenticated_page(request: pytest.FixtureRequest, page: Page, login_page: L
     return page
 
 @pytest.fixture
+def wishlist_page(authenticated_page):
+    from pages.wishlist_page import WishlistPage
+    return WishlistPage(authenticated_page)
+
+@pytest.fixture
+def cart_page(authenticated_page):
+    from pages.cart_page import CartPage
+    return CartPage(authenticated_page)
+
+@pytest.fixture
 def navbar(authenticated_page):
     from components.navbar import NavBarComponent
     return NavBarComponent(authenticated_page, authenticated_page.get_by_test_id("navbar"))

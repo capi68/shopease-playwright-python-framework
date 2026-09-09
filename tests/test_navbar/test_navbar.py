@@ -1,4 +1,4 @@
-from csv import excel
+
 
 import allure
 import pytest
@@ -6,11 +6,12 @@ import pytest
 from playwright.sync_api import expect, Page
 from components.navbar import NavBarComponent
 from pages.catalog_page import CatalogPage
+from pages.wishlist_page import WishlistPage
 
 
+@pytest.mark.navbar
 class TestNavbar:
     """Tests for NavBar UI."""
-
 
     def test_navbar_display(self, navbar: NavBarComponent) -> None:
         """Verify the correctly display of navbar."""
@@ -20,7 +21,6 @@ class TestNavbar:
         expect(navbar.navbar_brand).to_be_visible()
         expect(navbar.search_input).to_be_visible()
         expect(navbar.search_btn).to_be_visible()
-        expect(navbar.navbar_brand).to_be_visible()
         for link in links:
             expect(navbar.navbar_links(link)).to_be_visible()
 
@@ -62,7 +62,6 @@ class TestNavbar:
             )
 
 
-    @pytest.mark.navbar
     @pytest.mark.xfail(
         reason="TRELLO-BUG: Clearing search input dos not reset catalog grid filter",
         strict=True
@@ -84,6 +83,52 @@ class TestNavbar:
         second_cards_count = int(catalog_page.results_count.inner_text().replace(" products", "").strip())
 
         assert initial_cards_count == second_cards_count
+
+
+    def test_add_product_to_wishlist(self, navbar: NavBarComponent, catalog_page: CatalogPage, wishlist_page: WishlistPage) -> None:
+        """Verify that click in add to wishlist button, the product appears in wishlist page."""
+
+        catalog_page.navigate()
+        #select first card in catalog
+        first_card = catalog_page.all_product_cards.first
+
+        #extract product_id
+        att_card = first_card.get_attribute("data-testid")
+        product_id = att_card.replace("product-card-prod-", "").strip()
+
+        #add to wishlist
+        catalog_page.wishlist_btn(product_id).click()
+
+        #navigate to wishlist page
+        navbar.navbar_links("wishlist").click()
+        expect(wishlist_page.page).to_have_url("/wishlist")
+
+        #Verify
+        expect(wishlist_page.wl_item_card(product_id)).to_be_visible()
+
+
+    def test_cart_badge_function(self, navbar: NavBarComponent, catalog_page: CatalogPage) -> None:
+        """Verify that cart badge function correctly."""
+
+        catalog_page.navigate()
+        expect(navbar.cart_badge).not_to_be_visible()
+        #select first card in catalog
+        first_card = catalog_page.all_product_cards.first
+
+        #xtract product_id
+        att_card = first_card.get_attribute("data-testid")
+        product_id = att_card.replace("product-card-prod-", "").strip()
+
+        #add to cart
+        catalog_page.add_to_card_btn(product_id).click()
+
+        expect(navbar.cart_badge).to_be_visible()
+        expect(navbar.cart_badge).to_have_text("1")
+
+
+
+
+
 
 
 

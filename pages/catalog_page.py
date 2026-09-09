@@ -11,11 +11,6 @@ class CatalogPage(BasePage):
         """Return the catalog page URL."""
         return "/catalog"
 
-
-    #-----------------------------
-    #Catalog Page
-    #-----------------------------
-
     @property
     def results_count(self) -> Locator:
         """Return results count locator."""
@@ -26,8 +21,19 @@ class CatalogPage(BasePage):
         """Return products grid locator."""
         return self.page.get_by_test_id("product-grid")
 
+
+    #-----------------------------
+    #Cards
+    #-----------------------------
+
+
+    @property
+    def all_product_cards(self) -> Locator:
+        """Return locator for all product cards."""
+        return self.page.locator("[data-testid^='product-card-prod-']")
+
     def card_product(self, product_id: int) -> Locator:
-        """Return product card locator by product_id"""
+        """Return specific product card locator by product_id"""
         return self.page.get_by_test_id(f"product-card-prod-{product_id}")
 
     @property
@@ -44,6 +50,14 @@ class CatalogPage(BasePage):
     def product_name(self) -> Locator:
         """Return product name locator in the grid."""
         return self.page.locator('[data-testid^="product-name-prod-"]')
+
+    def wishlist_btn(self, product_id: int) -> Locator:
+        """Return the add to wishlist button for specific product by product_id."""
+        return self.page.get_by_test_id(f"wishlist-btn-prod-{product_id}")
+
+    def add_to_card_btn(self, product_id: int) -> Locator:
+        """Return add to cart button for specific product by product_id."""
+        return self.page.get_by_test_id(f"add-to-cart-prod-{product_id}")
 
     @property
     def empty_catalog(self) -> Locator:

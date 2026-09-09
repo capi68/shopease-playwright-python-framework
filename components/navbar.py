@@ -31,6 +31,11 @@ class NavBarComponent(BaseComponent):
         """Return a navbar link locator for specific link."""
         return self.root.get_by_test_id(f"nav-{link.lower()}")
 
+    @property
+    def cart_badge(self) -> Locator:
+        """Return cart badge locator."""
+        return self.root.get_by_test_id("cart-badge")
+
 
     def search_product(self, query: str) -> None:
         """Fill search input and click submit button."""
