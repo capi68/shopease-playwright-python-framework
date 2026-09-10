@@ -87,6 +87,11 @@ def cart_page(authenticated_page):
     return CartPage(authenticated_page)
 
 @pytest.fixture
+def checkout_page(authenticated_page):
+    from pages.checkout_page import CheckoutPage
+    return CheckoutPage(authenticated_page)
+
+@pytest.fixture
 def profile_page(authenticated_page):
     from pages.profile_page import ProfilePage
     return ProfilePage(authenticated_page)
