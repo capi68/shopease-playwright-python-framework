@@ -31,8 +31,8 @@ class ProfilePage(BasePage):
         """Return profile email locator."""
         return self.page.get_by_test_id("profile-email")
     
-    
-    def profile_role(self, role: str) -> Locator:
+    @property
+    def profile_role(self) -> Locator:
         """Return profile role locator."""
         return self.page.get_by_test_id("profile-role")
     
@@ -43,5 +43,5 @@ class ProfilePage(BasePage):
     
     @property
     def total_spent(self) -> Locator:
-        """Return local spent locator."""
+        """Return total spent locator."""
         return self.page.get_by_test_id("stat-total-spent")
