@@ -40,39 +40,39 @@ class CartPage(BasePage):
         """Return items container locator."""
         return self.page.get_by_test_id("cart-items")
 
-    def cart_item(self, item_id: int) -> Locator:
+    def cart_item(self, item_id: str) -> Locator:
         """Return cart item locator by item_id"""
         return self.page.get_by_test_id(f"cart-item-prod-{item_id}")
 
-    def cart_item_image(self, item_id: int) -> Locator:
+    def cart_item_image(self, item_id: str) -> Locator:
         """Return item image of specific item locator."""
         return self.cart_item(item_id).locator(".cart-item-image")
 
-    def cart_item_name(self, item_id: int) -> Locator:
+    def cart_item_name(self, item_id: str) -> Locator:
         """Return item name of specific item locator."""
         return self.cart_item(item_id).get_by_test_id(f"cart-item-name-prod-{item_id}")
 
-    def cart_item_price(self, item_id: int) -> Locator:
+    def cart_item_price(self, item_id: str) -> Locator:
         """Return item price of specific item locator."""
         return self.cart_item(item_id).get_by_test_id(f"cart-item-price-prod-{item_id}")
 
-    def decrease_qty_item_btn(self, item_id: int) -> Locator:
+    def decrease_qty_item_btn(self, item_id: str) -> Locator:
         """Return decrease quantity button  of specific item locator."""
         return self.cart_item(item_id).get_by_test_id(f"qty-dec-prod-{item_id}")
 
-    def qty_value_item(self, item_id: int) -> Locator:
+    def qty_value_item(self, item_id: str) -> Locator:
         """Return quantity value  of specific item locator."""
         return self.cart_item(item_id).get_by_test_id(f"qty-val-prod-{item_id}")
 
-    def increase_qty_item_btn(self, item_id: int) -> Locator:
+    def increase_qty_item_btn(self, item_id: str) -> Locator:
         """Return increase quantity button  of specific item locator."""
         return self.cart_item(item_id).get_by_test_id(f"qty-inc-prod-{item_id}")
 
-    def subtotal_item(self, item_id: int) -> Locator:
+    def subtotal_item(self, item_id: str) -> Locator:
         """Return subtotal of specific item locator."""
         return self.cart_item(item_id).get_by_test_id(f"cart-item-subtotal-prod-{item_id}")
 
-    def remove_item_btn(self, item_id: int) -> Locator:
+    def remove_item_btn(self, item_id: str) -> Locator:
         """Return remove item button  of specific item locator."""
         return self.cart_item(item_id).get_by_test_id(f"cart-remove-prod-{item_id}")
 

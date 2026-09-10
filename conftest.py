@@ -95,3 +95,11 @@ def navbar(authenticated_page):
 def footer(authenticated_page):
     from components.footer import FooterComponent
     return FooterComponent(authenticated_page, authenticated_page.get_by_test_id("store-footer"))
+
+@pytest.fixture
+def first_product_id(catalog_page: CatalogPage) -> str:
+    """Navigate to catalog, pick the first product card and return its extracted ID."""
+    catalog_page.navigate()
+    first_card = catalog_page.all_product_cards.first
+    att_card = first_card.get_attribute("data-testid")
+    return att_card.replace("product-card-prod-", "").strip()

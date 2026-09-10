@@ -85,27 +85,6 @@ class TestNavbar:
         assert initial_cards_count == second_cards_count
 
 
-    def test_add_product_to_wishlist(self, navbar: NavBarComponent, catalog_page: CatalogPage, wishlist_page: WishlistPage) -> None:
-        """Verify that click in add to wishlist button, the product appears in wishlist page."""
-
-        catalog_page.navigate()
-        #select first card in catalog
-        first_card = catalog_page.all_product_cards.first
-
-        #extract product_id
-        att_card = first_card.get_attribute("data-testid")
-        product_id = att_card.replace("product-card-prod-", "").strip()
-
-        #add to wishlist
-        catalog_page.wishlist_btn(product_id).click()
-
-        #navigate to wishlist page
-        navbar.navbar_links("wishlist").click()
-        expect(wishlist_page.page).to_have_url("/wishlist")
-
-        #Verify
-        expect(wishlist_page.wl_item_card(product_id)).to_be_visible()
-
 
     def test_cart_badge_function(self, navbar: NavBarComponent, catalog_page: CatalogPage) -> None:
         """Verify that cart badge function correctly."""

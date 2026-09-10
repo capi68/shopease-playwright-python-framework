@@ -32,30 +32,30 @@ class CatalogPage(BasePage):
         """Return locator for all product cards."""
         return self.page.locator("[data-testid^='product-card-prod-']")
 
-    def card_product(self, product_id: int) -> Locator:
+    def card_product(self, product_id: str) -> Locator:
         """Return specific product card locator by product_id"""
         return self.page.get_by_test_id(f"product-card-prod-{product_id}")
 
 
-    def product_price(self, product_id: int) -> Locator:
+    def product_price(self, product_id: str) -> Locator:
         """Return product price locator by product_id."""
         return self.page.get_by_test_id(f"product-price-prod-{product_id}")
 
 
-    def product_rating(self, product_id: int) -> Locator:
+    def product_rating(self, product_id: str) -> Locator:
         """Return product rating locator by product_id."""
         return self.page.get_by_test_id(f"product-card-prod-{product_id}")
 
 
-    def product_name(self, product_id: int) -> Locator:
+    def product_name(self, product_id: str) -> Locator:
         """Return product name by product_id locator."""
         return self.page.get_by_test_id(f"product-name-prod-{product_id}")
 
-    def wishlist_btn(self, product_id: int) -> Locator:
+    def wishlist_btn(self, product_id: str) -> Locator:
         """Return the add to wishlist button for specific product by product_id."""
         return self.page.get_by_test_id(f"wishlist-btn-prod-{product_id}")
 
-    def add_to_card_btn(self, product_id: int) -> Locator:
+    def add_to_card_btn(self, product_id: str) -> Locator:
         """Return add to cart button for specific product by product_id."""
         return self.page.get_by_test_id(f"add-to-cart-prod-{product_id}")
 
