@@ -5,6 +5,11 @@ from playwright.sync_api import Locator
 
 class CheckoutPage(BasePage):
     """Page Object for ShopEase order page."""
+
+    @property
+    def url(self) -> str:
+        """Return the checkout url page"""
+        return "/checkout"
     
     @property
     def checkout_steps(self) -> Locator:

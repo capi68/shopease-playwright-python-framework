@@ -92,6 +92,11 @@ def checkout_page(authenticated_page):
     return CheckoutPage(authenticated_page)
 
 @pytest.fixture
+def orders_page(authenticated_page):
+    from pages.orders_page import OrdersPage
+    return OrdersPage(authenticated_page)
+
+@pytest.fixture
 def profile_page(authenticated_page):
     from pages.profile_page import ProfilePage
     return ProfilePage(authenticated_page)
