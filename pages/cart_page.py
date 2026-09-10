@@ -20,6 +20,17 @@ class CartPage(BasePage):
         """Return cart page contain locator."""
         return self.page.get_by_test_id("cart-page")
 
+
+    @property
+    def start_shopping_btn(self) -> Locator:
+        """Return start shopping button locator."""
+        return  self.page.get_by_test_id("continue-shopping")
+
+    @property
+    def cart_empty_container(self) -> Locator:
+        """Return cart empty container locator."""
+        return self.page.get_by_test_id("cart-empty")
+
     #----------------------
     #items contain
     #----------------------
@@ -45,19 +56,15 @@ class CartPage(BasePage):
         """Return item price of specific item locator."""
         return self.cart_item(item_id).get_by_test_id(f"cart-item-price-prod-{item_id}")
 
-    def cart_item_qty(self, item_id: int) -> Locator:
-        """Return item quantity of specific item locator."""
-        return self.cart_item(item_id).get_by_test_id(f"cart-item-qty-prod-{item_id}")
-
-    def decrease_quantity_item_btn(self, item_id: int) -> Locator:
+    def decrease_qty_item_btn(self, item_id: int) -> Locator:
         """Return decrease quantity button  of specific item locator."""
         return self.cart_item(item_id).get_by_test_id(f"qty-dec-prod-{item_id}")
 
-    def quantity_value_item_btn(self, item_id: int) -> Locator:
+    def qty_value_item(self, item_id: int) -> Locator:
         """Return quantity value  of specific item locator."""
         return self.cart_item(item_id).get_by_test_id(f"qty-val-prod-{item_id}")
 
-    def increase_quantity_item_btn(self, item_id: int) -> Locator:
+    def increase_qty_item_btn(self, item_id: int) -> Locator:
         """Return increase quantity button  of specific item locator."""
         return self.cart_item(item_id).get_by_test_id(f"qty-inc-prod-{item_id}")
 

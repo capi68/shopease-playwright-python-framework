@@ -36,20 +36,20 @@ class CatalogPage(BasePage):
         """Return specific product card locator by product_id"""
         return self.page.get_by_test_id(f"product-card-prod-{product_id}")
 
-    @property
-    def product_price(self) -> Locator:
-        """Return product price locator in the grid."""
-        return self.page.locator('[data-testid^="product-price-prod-"]')
 
-    @property
-    def product_rating(self) -> Locator:
-        """Return product rating locator in the grid."""
-        return self.page.locator('[data-testid^="product-rating-prod-"]')
+    def product_price(self, product_id: int) -> Locator:
+        """Return product price locator by product_id."""
+        return self.page.get_by_test_id(f"product-price-prod-{product_id}")
 
-    @property
-    def product_name(self) -> Locator:
-        """Return product name locator in the grid."""
-        return self.page.locator('[data-testid^="product-name-prod-"]')
+
+    def product_rating(self, product_id: int) -> Locator:
+        """Return product rating locator by product_id."""
+        return self.page.get_by_test_id(f"product-card-prod-{product_id}")
+
+
+    def product_name(self, product_id: int) -> Locator:
+        """Return product name by product_id locator."""
+        return self.page.get_by_test_id(f"product-name-prod-{product_id}")
 
     def wishlist_btn(self, product_id: int) -> Locator:
         """Return the add to wishlist button for specific product by product_id."""

@@ -36,7 +36,7 @@ class TestNavbar:
 
 
     def test_logout_link(self, navbar: NavBarComponent) -> None:
-        """Verify that logout link redirect to login page."""
+        """Verify that logout link redirect to catalog page."""
 
         navbar.navbar_links("logout").click()
 
