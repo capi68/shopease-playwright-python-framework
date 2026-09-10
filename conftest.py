@@ -87,6 +87,11 @@ def cart_page(authenticated_page):
     return CartPage(authenticated_page)
 
 @pytest.fixture
+def profile_page(authenticated_page):
+    from pages.profile_page import ProfilePage
+    return ProfilePage(authenticated_page)
+
+@pytest.fixture
 def navbar(authenticated_page):
     from components.navbar import NavBarComponent
     return NavBarComponent(authenticated_page, authenticated_page.get_by_test_id("navbar"))
