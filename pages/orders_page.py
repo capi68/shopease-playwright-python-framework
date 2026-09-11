@@ -30,26 +30,31 @@ class OrdersPage(BasePage):
         """Return order list locator."""
         return self.page.get_by_test_id("orders-list")
 
-    def order_card(self, order_id: str) -> Locator:
+    @property
+    def latest_order_card(self) -> Locator:
         """Return order card id locator"""
-        return self.page.get_by_test_id(f"order-ORD-{order_id}")
+        return self.page.locator("[data-testid^='order-ORD-']").first
 
-    def order_id(self, order_id: str) -> Locator:
+    @property
+    def latest_order_id(self) -> Locator:
         """Return order id span locator"""
-        return self.order_card(order_id).get_by_test_id(f"order-id-ORD-{order_id}")
+        return self.latest_order_card.locator("[data-testid^='order-id-ORD-']")
 
-    def order_date(self, order_id: str) -> Locator:
+    @property
+    def latest_order_date(self) -> Locator:
         """Return order date locator"""
-        return self.order_card(order_id).get_by_test_id(f"order-date-ORD-{order_id}")
+        return self.latest_order_card.locator("[data-testid^='order-date-ORD-']")
 
-    def order_status(self, order_id: str) -> Locator:
+    @property
+    def latest_order_status(self) -> Locator:
         """Return order status locator"""
-        return self.order_card(order_id).get_by_test_id(f"order-status-ORD-{order_id}")
+        return self.latest_order_card.locator("[data-testid^='order-status-ORD-']")
 
-    def order_items(self, order_id: str, item_index: int = 0) -> Locator:
-        """Return order items locator"""
-        return self.order_card(order_id).get_by_test_id(f"order-item-ORD-{order_id}-{item_index}")
+    def latest_order_item(self, item_index: int = 0) -> Locator:
+        """Return specific item locator of the latest order by index."""
+        return self.latest_order_card.locator(f"[data-testid^='order-item-ORD-'][data-testid$='-{item_index}']")
 
-    def order_total(self, order_id: str) -> Locator:
+    @property
+    def latest_order_total(self) -> Locator:
         """Return order total locator"""
-        return self.order_card(order_id).get_by_test_id(f"order-total-ORD-{order_id}")
+        return self.latest_order_card.locator("[data-testid^='order-total-ORD-']")

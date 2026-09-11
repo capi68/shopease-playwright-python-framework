@@ -71,14 +71,14 @@ class CheckoutPage(BasePage):
         return self.page.get_by_test_id("shipping-phone")
 
     @property
-    def continue_to_payment_bt(self) -> Locator:
+    def continue_to_payment_btn(self) -> Locator:
         """Return continue to payment button locator."""
         return self.page.get_by_test_id("shipping-next")
 
 
     def field_error_message(self, field: str) -> Locator:
         """Return error message by specified field locator."""
-        return self.page.get_by_test_id(f"error-ship-{field}")
+        return self.page.get_by_test_id(f"error-ship-{field.lower()}")
 
     #-----------
     #Payment
@@ -118,6 +118,10 @@ class CheckoutPage(BasePage):
     def review_order_btn(self) -> Locator:
         """Return review order button locator."""
         return self.page.get_by_test_id("payment-next")
+
+    def error_card_alerts(self, field: str) -> Locator:
+        """Return error card fields locators."""
+        return self.page.get_by_test_id(f"error-card-{field}")
 
     #-------------
     #review
