@@ -1,25 +1,33 @@
+"""Tests for Profile UI functionality."""
 
-
+import re
 import allure
 import pytest
-import re
-from playwright.sync_api import expect, Page
+from playwright.sync_api import Page, expect
 
 from components.footer import FooterComponent
 from components.navbar import NavBarComponent
 from pages.profile_page import ProfilePage
 
-class TestProfile:
-    """Tests for Profile UI."""
 
-    @pytest.mark.profile
+@allure.epic("EPIC-01: Authentication")
+@allure.feature("Profile Module")
+@pytest.mark.profile
+class TestProfile:
+    """Test suite for Profile UI functionality and user details."""
+
+    @pytest.mark.regression
+    @allure.story("Profile Visualization")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.title("Verify profile card, user metrics, and layout display correctly for {authenticated_page}")
     def test_profile_page_display(
             self,
             profile_page: ProfilePage,
             navbar: NavBarComponent,
             footer: FooterComponent,
-            request: pytest.FixtureRequest) -> None:
-        """Verify that Profile page display correctly."""
+            request: pytest.FixtureRequest,
+    ) -> None:
+        """Verify that Profile page displays user details and statistics correctly."""
         profile_page.navigate()
 
         current_role = request.node.callspec.params["authenticated_page"]
