@@ -32,6 +32,26 @@ class CatalogPage(BasePage):
         """Return locator for all product cards."""
         return self.page.locator("[data-testid^='product-card-prod-']")
 
+    @property
+    def all_product_price(self) -> Locator:
+        """Return all products price locator."""
+        return self.page.locator("[data-testid^='product-price-prod-']")
+
+    @property
+    def all_product_rating(self) -> Locator:
+        """Return all products rating locator."""
+        return self.page.locator("[data-testid^='product-rating-prod-']")
+
+    @property
+    def all_product_name(self) -> Locator:
+        """Return all products name locator."""
+        return self.page.locator("[data-testid^='product-name-prod-']")
+
+    #--------------------------------------
+    #Methods parameterized by product_id
+    #--------------------------------------
+
+
     def card_product(self, product_id: str) -> Locator:
         """Return specific product card locator by product_id"""
         return self.page.get_by_test_id(f"product-card-prod-{product_id}")
@@ -44,7 +64,7 @@ class CatalogPage(BasePage):
 
     def product_rating(self, product_id: str) -> Locator:
         """Return product rating locator by product_id."""
-        return self.page.get_by_test_id(f"product-card-prod-{product_id}")
+        return self.page.get_by_test_id(f"product-rating-prod-{product_id}")
 
 
     def product_name(self, product_id: str) -> Locator:
